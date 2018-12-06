@@ -63,7 +63,7 @@ def conver_to_pascal(anno_file):
             assert ymax > ymin
 
     tree = ET.ElementTree(annotation)
-    xml_filepath = os.path.join(file_name.replace("annotations","PascalAnnotations").replace("txt","xml"))
+    xml_filepath = os.path.join(file_name.replace("annotations","{}/Annotations".format(dst)).replace("txt","xml"))
     tree.write(xml_filepath)
 
 
@@ -76,6 +76,8 @@ def conver_to_pascal(anno_file):
 
 if __name__ == '__main__':
 
+    import sys
+    dst = sys.argv[1]
 
     count = 0
     with open("Train/annotations.lst") as f:
@@ -83,7 +85,7 @@ if __name__ == '__main__':
             count +=  1
             filename = filename.replace("\n", "")
             print(filename)
-            conver_to_pascal(filename)
+            conver_to_pascal(filename, dst)
 
             print(count)
 
