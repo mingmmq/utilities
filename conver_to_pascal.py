@@ -77,10 +77,12 @@ def conver_to_pascal(anno_file):
 if __name__ == '__main__':
 
     import sys
-    dst = sys.argv[1]
+    inria_folder = sys.argv[1]
+    dst = sys.argv[2]
+
 
     count = 0
-    with open("Train/annotations.lst") as f:
+    with open("{}/Train/annotations.lst".format(inria_folder)) as f:
         for filename in f.readlines():
             count +=  1
             filename = filename.replace("\n", "")
